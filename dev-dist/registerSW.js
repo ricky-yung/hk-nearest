@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/hk-nearest/dev-sw.js?dev-sw', { scope: '/hk-nearest/', type: 'classic' })
