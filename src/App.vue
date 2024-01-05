@@ -1,6 +1,18 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
+import { ref, onMounted } from 'vue'
+import GoogleMap from './components/GoogleMap.vue';
 import NavBar from "./components/NavBar.vue";
+
+import { RepositoryFactory } from './repo/RepositoryFactory';
+import MapMarker from "./modal/MapMarker";
+
+const nearestSchoolRepository = RepositoryFactory.get('nearestSchoolRepository');
+
+onMounted(() => {
+  let result = nearestSchoolRepository.get(22.2812, 114.1659);
+  console.log(result);
+})
+
 </script>
 
 <template>
@@ -11,7 +23,7 @@ import NavBar from "./components/NavBar.vue";
     <a-layout>
       <a-layout-header :style="headerStyle">Header</a-layout-header>
       <a-layout-content :style="contentStyle">
-        <HelloWorld msg="Vite + Vue" />
+        <GoogleMap />
       </a-layout-content>
       <a-layout-footer :style="footerStyle">Footer</a-layout-footer>
     </a-layout>
